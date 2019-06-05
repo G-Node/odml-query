@@ -7,7 +7,7 @@ RUN mkdir -p /fuseki
 RUN mkdir -p /content
 
 # Copy all files including the modified fuseki files into the main directory.
-ADD . /fuseki
+ADD ./fuseki /fuseki
 
 # Make sure both persistent graphs and server configuration files
 # are available on server startup
@@ -15,9 +15,6 @@ ENV FUSEKI_HOME /fuseki
 ENV FUSEKI_BASE /content
 
 WORKDIR /fuseki
-
-# Expose port to the outside
-# EXPOSE 4044
 
 ARG user=fuseki
 ARG group=fuseki
