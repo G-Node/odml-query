@@ -1,2 +1,3 @@
-# odml-query
-A SPARQL server tailored to query odML specific RDF based on Apache fuseki
+# fuseki
+
+G-Node specific Apache Jena Fuseki server
