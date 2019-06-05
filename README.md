@@ -1,7 +1,8 @@
 # The G-Node odml-query service
 
-odml-query is a SPARQL server based on Apache Fuseki, the service is modified to query 
-[odML](https://g-node.github.io/python-odml/) specific RDF.  
+odml-query is a SPARQL server based on [Apache Fuseki](
+https://jena.apache.org/documentation/fuseki2/index.html), the service is modified 
+to query [odML](https://g-node.github.io/python-odml/) specific RDF.  
 
 For more information on the odML data formats, please check the sections below.
 
@@ -17,3 +18,7 @@ Python package manager `pip` by typing `pip install odml`.
 
 More information about the project including related projects as well as tutorials and
 examples can be found at our odML [project page](https://g-node.github.io/python-odml/).
+
+The odML specific RDF definitions can be found [here](
+https://raw.githubusercontent.com/G-Node/python-odml/master/doc/odml_ontology/root-ontology.ttl).
+
