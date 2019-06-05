@@ -1,14 +1,37 @@
-# IDEA
-.idea/
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+*.o
+*.a
+*.so
+
+# Folders
+_obj
+_test
+python/odml/resources/save_load/1.4*
+python/odml/resources/convert/1.4__*
+
+# Architecture specific extensions/prefixes
+*.[568vq]
+[568vq].out
+
+*.cgo1.go
+*.cgo2.c
+_cgo_defun.c
+_cgo_gotypes.go
+_cgo_export.*
+
+*.exe
+*.test
+*.prof
+
+# Idea
 *.iml
+.idea
 
-# log files
-*.log
+# Temp
+*~
 
-# maven
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
+# jupyter notebook checkpoints
+*.ipynb_checkpoints*
+
+# Mac specifics
+.DS_Store
