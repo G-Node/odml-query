@@ -8,7 +8,7 @@ define( [], function() {
       "rdfs":     "http://www.w3.org/2000/01/rdf-schema#",
       "owl":      "http://www.w3.org/2002/07/owl#",
       "xsd":      "http://www.w3.org/2001/XMLSchema#",
-      "odml":     "https://g-node.org/projects/odml-rdf#"
+      "odml":     "https://g-node.org/odml-rdf#"
     },
     queries: [
       { "name": "Generic query",
