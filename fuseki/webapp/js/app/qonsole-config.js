@@ -11,6 +11,36 @@ define( [], function() {
       "odml":     "https://g-node.org/odml-rdf#"
     },
     queries: [
+      { "name": "Keyword query",
+        "query": "SELECT ?file ?keyword ?id_type_value ?doi_link" +
+                 "WHERE {" +
+                    "?doc rdf:type odml:Document ." +
+                    "?doc odml:hasFileName ?file ." +
+                    "?doc odml:hasSection ?s ." +
+                    "?s odml:hasSection ?ids ." +
+                    "?ids odml:hasProperty ?idp ." +
+                    "?ids odml:hasName ?secidname ." +
+                    "?idp odml:hasName \"identifier\" ." +
+                    "?idp odml:hasValue ?doival ." +
+                    "?ids odml:hasProperty ?pt ." +
+                    "?pt odml:hasName \"identifierType\" ." +
+                    "?pt odml:hasValue ?idtype ." +
+                    "?idtype rdfs:member ?id_type_value ." +
+                    "?doival rdfs:member ?doi_val ." +
+                    "?s odml:hasSection ?subcont ." +
+                    "?s odml:hasName ?sec_name ." +
+                    "?subcont odml:hasSection ?subj ." +
+                    "?subj odml:hasProperty ?p ." +
+                    "?p odml:hasName ?prop_name ." +
+                    "?p odml:hasValue ?v ." +
+                    "{?v rdfs:member \"Neuroscience\"} UNION {?v rdfs:member \"Electrophysiology\"} ." +
+                    "?v rdfs:member ?keyword ." +
+                    "BIND(CONCAT(\"https://doi.org/\", ?doi_val) AS ?doi_link)" +
+                 "}" +
+                 "ORDER BY ?file" +
+                 "LIMIT 50",
+        "prefixes": ["rdf", "rdfs", "odml"]
+      },
       { "name": "Generic query",
         "query": "SELECT ?subject ?predicate ?object\nWHERE {\n" +
                  "  ?subject ?predicate ?object\n}\n" +
