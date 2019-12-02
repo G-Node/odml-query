@@ -1,3 +1,5 @@
+[![Docker Automated build](https://img.shields.io/docker/automated/gnode/meta.svg)](https://hub.docker.com/repository/docker/gnode/meta/)
+
 # The G-Node odml-query service
 
 odml-query is a SPARQL server based on [Apache Fuseki](
