@@ -12,32 +12,32 @@ define( [], function() {
     },
     queries: [
       { "name": "Keyword query",
-        "query": "SELECT ?file ?keyword ?id_type_value ?doi_link" +
-                 "WHERE {" +
-                    "?doc rdf:type odml:Document ." +
-                    "?doc odml:hasFileName ?file ." +
-                    "?doc odml:hasSection ?s ." +
-                    "?s odml:hasSection ?ids ." +
-                    "?ids odml:hasProperty ?idp ." +
-                    "?ids odml:hasName ?secidname ." +
-                    "?idp odml:hasName \"identifier\" ." +
-                    "?idp odml:hasValue ?doival ." +
-                    "?ids odml:hasProperty ?pt ." +
-                    "?pt odml:hasName \"identifierType\" ." +
-                    "?pt odml:hasValue ?idtype ." +
-                    "?idtype rdfs:member ?id_type_value ." +
-                    "?doival rdfs:member ?doi_val ." +
-                    "?s odml:hasSection ?subcont ." +
-                    "?s odml:hasName ?sec_name ." +
-                    "?subcont odml:hasSection ?subj ." +
-                    "?subj odml:hasProperty ?p ." +
-                    "?p odml:hasName ?prop_name ." +
-                    "?p odml:hasValue ?v ." +
-                    "{?v rdfs:member \"Neuroscience\"} UNION {?v rdfs:member \"Electrophysiology\"} ." +
-                    "?v rdfs:member ?keyword ." +
-                    "BIND(CONCAT(\"https://doi.org/\", ?doi_val) AS ?doi_link)" +
-                 "}" +
-                 "ORDER BY ?file" +
+        "query": "SELECT ?file ?keyword ?id_type_value ?doi_link\n" +
+                 "WHERE {\n" +
+                    "?doc rdf:type odml:Document .\n" +
+                    "?doc odml:hasFileName ?file .\n" +
+                    "?doc odml:hasSection ?s .\n" +
+                    "?s odml:hasSection ?ids .\n" +
+                    "?ids odml:hasProperty ?idp .\n" +
+                    "?ids odml:hasName ?secidname .\n" +
+                    "?idp odml:hasName \"identifier\" .\n" +
+                    "?idp odml:hasValue ?doival .\n" +
+                    "?ids odml:hasProperty ?pt .\n" +
+                    "?pt odml:hasName \"identifierType\" .\n" +
+                    "?pt odml:hasValue ?idtype .\n" +
+                    "?idtype rdfs:member ?id_type_value .\n" +
+                    "?doival rdfs:member ?doi_val .\n" +
+                    "?s odml:hasSection ?subcont .\n" +
+                    "?s odml:hasName ?sec_name .\n" +
+                    "?subcont odml:hasSection ?subj .\n" +
+                    "?subj odml:hasProperty ?p .\n" +
+                    "?p odml:hasName ?prop_name .\n" +
+                    "?p odml:hasValue ?v .\n" +
+                    "{?v rdfs:member \"Neuroscience\"} UNION {?v rdfs:member \"Electrophysiology\"} .\n" +
+                    "?v rdfs:member ?keyword .\n" +
+                    "BIND(CONCAT(\"https://doi.org/\", ?doi_val) AS ?doi_link)\n" +
+                 "}\n" +
+                 "ORDER BY ?file\n" +
                  "LIMIT 50",
         "prefixes": ["rdf", "rdfs", "odml"]
       },
