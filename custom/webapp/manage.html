@@ -2,7 +2,7 @@
 <!-- This file has been modified from the original Fuseki distribution -->
 <html>
   <head>
-    <title>meta.g-node.org</title>
+    <title>meta.g-node.org - manage datasets</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -21,7 +21,7 @@
     <link href="css/jquery.dataTables.css" rel="stylesheet" media="screen">
     <link href="css/fui.css" rel="stylesheet" media="screen">
 
-    <script data-main="js/app/main.index.js" src="js/lib/require.min.js"></script>
+    <script data-main="js/app/main.manage.js" src="js/lib/require.min.js"></script>
 
     <!--[if lt IE 9]>
       <script src="js/lib/html5shiv.js"></script>
@@ -67,52 +67,46 @@
 
     <!-- Page content -->
     <div class="container">
-      <div class="imgcontainer pull-right">
-        <img src="images/odMLLogo.png" alt="odML logo" title="meta.g-node.org"
-             style="width: 55vw; max-width:110px;"/>
-      </div>
       <div class="row">
-        <div class="col-md-12">
-          <h1 class="text-center">odML metadata SPARQL service</h1>
-          <div class="text-muted text-center">
-            <small class='host-details'></small>
-          </div>
-        </div>
-      </div>
-
-      <hr>
-      <div class="row current-datasets">
         <div class="col-md-12">
           <h2>
-            Datasets on this server
+            Manage datasets
           </h2>
-          <div id="dataset-selection-list"></div>
+          <p>Perform management actions on existing datasets, including backup,
+          or add a new dataset.
+          </p>
+        </div>
+      </div> <!-- /.row -->
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="dataset-selector-container"></div>
         </div>
       </div>
 
       <div class="row">
-        <div class="bg-info col-md-12">
-          <dl class="dl-horizontal">
-            <dt><a href="dataset.html">Dataset</a></dt>
-            <dd>Run queries and modify datasets hosted by this server.</dd>
-            <dt><a href="documentation.html">Help</a></dt>
-            <dd>Familiarize yourself with SPARQL and the Fuseki server.</dd>
-          </dl>
-        </div>
-      </div>
-    </div>
+        <div class="col-md-12">
+          <div class="content-frame">
+            <ul class="nav nav-tabs">
+              <li><a href="#datasets" data-toggle="tab"><i class='fa fa-database'></i> existing datasets</a></li>
+              <li><a href="#new-dataset" data-toggle="tab"><i class='fa fa-plus-circle'></i> add new dataset</a></li>
+            </ul>
 
-    <hr>
-    <div class="container">
-      <p>odML (open metadata Markup Language) is a file format for storing arbitrary metadata.
-         The underlying data model offers a way to store metadata in a structured human- and machine-readable way.
-        Find out more about the format on the main <a href="https://g-node.github.io/python-odml/">project page</a>.</p>
-      <p>odML can be exported to RDF to enable search via multiple documents using the SPARQL query language.</p>
-      <p>This server provides a searchable database of neuroscientific datasets published via both the <a href="https://crcns.org">CRCNS</a>
-        (Collaborative Research in Computational Neuroscience) and the <a href="http://gin.g-node.org">data publication platform GIN</a>
-        of the <a href="http:/www.g-node.org">German Neuroinformatics Node</a>.
-      </p>
-    </div>
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div class="tab-pane" id="datasets">
+                <div id="dataset-management"></div>
+              </div> <!-- /.tab-pane -->
+
+              <div class="tab-pane" id="new-dataset">
+                <div id="dataset-simple-create"></div>
+              </div> <!-- /.tab-pane -->
+            </div> <!-- /.tab-content -->
+          </div> <!-- /.content-frame -->
+
+        </div> <!-- /.col-md-12 -->
+      </div> <!-- /.row -->
+    </div> <!--/.container -->
 
     <hr>
     <div class="container">
