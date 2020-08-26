@@ -30,7 +30,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default" role="navigation" style="margin-bottom: 0px;">
       <div class="container">
         <div class="row">
           <!-- Brand and toggle get grouped for better mobile display -->
@@ -62,48 +62,51 @@
     </nav>
 
     <!-- Page content -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h1 class="text-center">odML metadata SPARQL service</h1>
-          <div class="text-muted text-center">
-            <small class='host-details'></small>
+    <div style="background: #eae6e1; padding-top: 30px; padding-bottom: 80px;">
+      <div class="container" style="background: #ffffff; padding: 10px; padding-top: 30px; border: 1px solid #cbcbcb; border-radius: 5px;">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h1 class="text-center">odML metadata SPARQL service</h1>
+              <div class="text-muted text-center">
+                <small class='host-details'></small>
+              </div>
+            </div>
+          </div>
+
+          <hr>
+          <div class="row current-datasets" style="margin-bottom: 0px;">
+            <div class="col-md-12">
+              <h2>
+                Datasets on this server
+              </h2>
+              <div id="dataset-selection-list"></div>
+            </div>
+          </div>
+
+          <hr>
+          <div class="bg-info" style="border: 1px solid #cbcbcb; border-radius: 3px; margin: 10px; padding: 10px">
+            <dl class="dl-horizontal" style="margin: 0px;">
+                <dt><a href="dataset.html">Dataset</a></dt>
+                <dd>Run queries on datasets hosted by this server.</dd>
+                <dt><a href="documentation.html">Help with queries</a></dt>
+                <dd>Familiarize yourself with the SPARQL query language.</dd>
+            </dl>
           </div>
         </div>
-      </div>
 
-      <hr>
-      <div class="row current-datasets">
-        <div class="col-md-12">
-          <h2>
-            Datasets on this server
-          </h2>
-          <div id="dataset-selection-list"></div>
+        <hr>
+        <div class="container">
+          <p>odML (open metadata Markup Language) is a file format for storing arbitrary metadata.
+             The underlying data model offers a way to store metadata in a structured human- and machine-readable way.
+            Find out more about the format on the main <a href="https://g-node.github.io/python-odml/">project page</a>.</p>
+          <p>odML can be exported to RDF to enable search via multiple documents using the SPARQL query language.</p>
+          <p>This server provides a searchable database of neuroscientific datasets published via both the <a href="https://crcns.org">CRCNS</a>
+            (Collaborative Research in Computational Neuroscience) and the <a href="http://gin.g-node.org">data publication platform GIN</a>
+            of the <a href="http:/www.g-node.org">German Neuroinformatics Node</a>.
+          </p>
         </div>
       </div>
-
-      <div class="row">
-        <div class="bg-info col-md-12">
-          <dl class="dl-horizontal">
-            <dt><a href="dataset.html">Dataset</a></dt>
-            <dd>Run queries and modify datasets hosted by this server.</dd>
-            <dt><a href="documentation.html">Help</a></dt>
-            <dd>Familiarize yourself with SPARQL.</dd>
-          </dl>
-        </div>
-      </div>
-    </div>
-
-    <hr>
-    <div class="container">
-      <p>odML (open metadata Markup Language) is a file format for storing arbitrary metadata.
-         The underlying data model offers a way to store metadata in a structured human- and machine-readable way.
-        Find out more about the format on the main <a href="https://g-node.github.io/python-odml/">project page</a>.</p>
-      <p>odML can be exported to RDF to enable search via multiple documents using the SPARQL query language.</p>
-      <p>This server provides a searchable database of neuroscientific datasets published via both the <a href="https://crcns.org">CRCNS</a>
-        (Collaborative Research in Computational Neuroscience) and the <a href="http://gin.g-node.org">data publication platform GIN</a>
-        of the <a href="http:/www.g-node.org">German Neuroinformatics Node</a>.
-      </p>
     </div>
 
     <hr>
