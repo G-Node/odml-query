@@ -27,10 +27,20 @@
       <script src="js/lib/html5shiv.js"></script>
       <script src="js/lib/respond.min.js"></script>
     <![endif]-->
+
+    <style>
+      .odml-logo { width: 55vw; max-width:55px; padding: 5px; }
+      .no-bottom-margin { margin-bottom: 0px; }
+      .no-margin { margin: 0px; }
+      .back-custom { background: #eae6e1; padding-top: 30px; padding-bottom: 50px; }
+      .front-custom { background: #ffffff; padding: 10px; padding-top: 30px; border: 1px solid #cbcbcb; border-radius: 5px; }
+      .info-box { border: 1px solid #cbcbcb; border-radius: 3px; margin: 10px; padding: 10px; }
+    </style>
+
   </head>
 
   <body>
-    <nav class="navbar navbar-default" role="navigation" style="margin-bottom: 0px;">
+    <nav class="navbar navbar-default no-bottom-margin" role="navigation">
       <div class="container">
         <div class="row">
           <!-- Brand and toggle get grouped for better mobile display -->
@@ -52,8 +62,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li>
-                <img src="images/odMLLogo.png" alt="odML logo" title="meta.g-node.org"
-                     style="width: 55vw; max-width:55px; padding: 5px;"/>
+                <img class="odml-logo" src="images/odMLLogo.png" alt="odML logo" title="meta.g-node.org" />
               </li>
             </ul>
           </div>
@@ -62,8 +71,8 @@
     </nav>
 
     <!-- Page content -->
-    <div style="background: #eae6e1; padding-top: 30px; padding-bottom: 80px;">
-      <div class="container" style="background: #ffffff; padding: 10px; padding-top: 30px; border: 1px solid #cbcbcb; border-radius: 5px;">
+    <div class="back-custom">
+      <div class="container front-custom">
         <div class="container">
           <div class="row">
             <div class="col-md-12">
@@ -75,7 +84,7 @@
           </div>
 
           <hr>
-          <div class="row current-datasets" style="margin-bottom: 0px;">
+          <div class="row current-datasets no-bottom-margin">
             <div class="col-md-12">
               <h2>
                 Datasets on this server
@@ -85,8 +94,8 @@
           </div>
 
           <hr>
-          <div class="bg-info" style="border: 1px solid #cbcbcb; border-radius: 3px; margin: 10px; padding: 10px">
-            <dl class="dl-horizontal" style="margin: 0px;">
+          <div class="bg-info info-box">
+            <dl class="dl-horizontal no-margin">
                 <dt><a href="dataset.html">Dataset</a></dt>
                 <dd>Run queries on datasets hosted by this server.</dd>
                 <dt><a href="documentation.html">Help with queries</a></dt>
