@@ -27,10 +27,19 @@
       <script src="js/lib/html5shiv.js"></script>
       <script src="js/lib/respond.min.js"></script>
     <![endif]-->
+
+    <style>
+      .odml-logo { width: 55vw; max-width:55px; padding: 5px; }
+      .no-bottom-margin { margin-bottom: 0px; }
+      .no-margin { margin: 0px; }
+      .back-custom { background: #eae6e1; padding-top: 30px; padding-bottom: 50px; }
+      .front-custom { background: #ffffff; padding: 10px; padding-top: 30px; border: 1px solid #cbcbcb; border-radius: 5px; }
+      .info-box { border: 1px solid #cbcbcb; border-radius: 3px; margin: 10px; padding: 10px; }
+    </style>
   </head>
 
   <body>
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default no-bottom-margin" role="navigation">
       <div class="container">
         <div class="row">
           <!-- Brand and toggle get grouped for better mobile display -->
@@ -52,8 +61,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li>
-                <img src="images/odMLLogo.png" alt="odML logo" title="meta.g-node.org"
-                     style="width: 55vw; max-width:55px; padding: 5px;"/>
+                <img class="odml-logo" src="images/odMLLogo.png" alt="odML logo" title="meta.g-node.org" />
               </li>
             </ul>
           </div>
@@ -104,18 +112,19 @@
       </div>
     </div>
 
+    <!-- footer -->
     <hr>
     <div class="container">
-        <div class="row">
+        <div class="row col-md-12">
             <div class="pull-left">
-                <ul class="list-inline">
+                <ul class="list-inline no-bottom-margin">
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="imprint.html">Imprint</a></li>
                 </ul>
             </div>
             <div class="pull-right">
-              <ul class="list-inline vertical-top">
+              <ul class="list-inline vertical-top no-bottom-margin">
                 <li><p>meta.g-node.org © <a href="http://www.g-node.org">G-Node</a> 2020 </p></li>
               </ul>
             </div>
@@ -123,9 +132,9 @@
     </div>
 
     <div class="container">
-      <div class="pull-right">
-        <div class="row">
-          <ul class="list-inline">
+      <div class="row col-md-12">
+        <div class="pull-right">
+          <ul class="list-inline no-bottom-margin">
             <li>Powered by Apache Jena <strong>Fuseki</strong></li>
             <li>
               <a href="http://jena.apache.org/documentation/fuseki2/">
