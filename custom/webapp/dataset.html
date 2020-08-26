@@ -40,6 +40,7 @@
       .back-custom { background: #eae6e1; padding-top: 30px; padding-bottom: 50px; }
       .front-custom { background: #ffffff; padding: 10px; padding-top: 30px; border: 1px solid #cbcbcb; border-radius: 5px; }
       .info-box { border: 1px solid #cbcbcb; border-radius: 3px; margin: 10px; padding: 10px; }
+      .inner-box { padding: 40px; }
     </style>
   </head>
 
@@ -74,169 +75,174 @@
       </div>
     </nav>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="dataset-selector-container"></div>
-        </div>
-      </div>
+    <!-- Page content -->
+    <div class="back-custom">
+      <div class="container front-custom">
+        <div class="container inner-box">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="dataset-selector-container"></div>
+            </div>
+          </div>
 
-      <div class="row">
-        <div class="col-md-12">
-          <div class="content-frame">
-            <ul class="nav nav-tabs">
-              <li><a href="#query" data-toggle="tab">SPARQL query</a></li>
-            </ul>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="content-frame">
+                <ul class="nav nav-tabs">
+                  <li><a href="#query" data-toggle="tab">SPARQL query</a></li>
+                </ul>
 
-            <!-- Tab panes -->
-            <div class="tab-content">
-              <div class="tab-pane" id="query">
-                <div class="no-dataset">Please select a dataset.</div>
-                <div class="with-dataset hidden">
-                  <div class="row">
-                    <div class="col-md-12">
-
-                      <div class="qonsole">
-                        <div class="col-md-12 well">
-                          <h2 class="">Example queries</h2>
-                          <ul class="list-inline examples">
-                          </ul>
-                        </div>
-
-                        <div class="col-md-12 well vertical">
-                          <h2 class="">Prefixes</h2>
-                          <ul class="list-inline prefixes">
-                            <li class="keep">
-                              <a data-toggle="modal" href="#prefixEditor" class="btn btn-custom2 btn-sm" title="Add a SPARQL prefix">
-                                <i class="fa fa-plus-circle"></i>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                        <div class="col-md-12 well">
-                            <div class="query-chrome" style="margin-top:0px; display:inline-block;vertical-align: top;width:40%;">
-                                  <div class="form-group">
-                                    <label for="sparqlEndpoint">SPARQL endpoint</label>
-                                    <input type="text" class="form-control" id="sparqlEndpoint" />
-                                  </div>
-                            </div>
-                             <div class="query-chrome" style="margin-top:0px; display:inline-block; vertical-align: top;width:28%">
-                                  <div class="form-group">
-                                    <label for="selectContentType">Content Type (Select)</label>
-                                    <select id="selectContentType" class="form-control">
-                                      <option value="application/sparql-results+json">JSON</option>
-                                      <option value="application/sparql-results+xml">XML</option>
-                                      <option value="text/csv">CSV</option>
-                                      <option value="text/tab-separated-values">TSV</option>
-                                    </select>
-                                  </div>
-                            </div>
-                            <div class="query-chrome" style="margin-top:0px; display:inline-block; vertical-align: top;width:28%">
-                                  <div class="form-group">
-                                    <label for="graphContentType">Content Type (Graph)</label>
-                                    <select id="graphContentType" class="form-control">
-                                      <option value="text/turtle">Turtle</option>
-                                      <option value="application/ld+json">JSON-LD</option>
-                                      <option value="application/n-triples">N-Triples</option>
-                                      <option value="application/rdf+xml">XML</option>
-                                    </select>
-                                  </div>
-                            </div>
-                        </div>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                  <div class="tab-pane" id="query">
+                    <div class="no-dataset">Please select a dataset.</div>
+                    <div class="with-dataset hidden">
+                      <div class="row">
                         <div class="col-md-12">
-                          <p>Add you SPARQL query below; make sure to provide all required query prefixes.</p>
-                        </div>
-                        <div class="col-md-12 well">
-                          <div class="query-edit">
-                            <div id="query-edit-cm" class=""></div>
-                          </div>
-                        </div>
 
-                        <!-- results -->
-                        <div id="results-block" class="row sparql sparql-results">
-                          <div class="col-md-12">
-                            <div class="well">
-                              <div class="row">
-                                <div class="col-md-12">
-                                  <span class="loadingSpinner hidden">
-                                    <img src="images/wait30.gif" alt="waiting for server action to complete" />
-                                  </span>
-                                  <span class="timeTaken hidden"></span>
+                          <div class="qonsole">
+                            <div class="col-md-12 well">
+                              <h2 class="">Example queries</h2>
+                              <ul class="list-inline examples">
+                              </ul>
+                            </div>
+
+                            <div class="col-md-12 well vertical">
+                              <h2 class="">Prefixes</h2>
+                              <ul class="list-inline prefixes">
+                                <li class="keep">
+                                  <a data-toggle="modal" href="#prefixEditor" class="btn btn-custom2 btn-sm" title="Add a SPARQL prefix">
+                                    <i class="fa fa-plus-circle"></i>
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="col-md-12 well">
+                                <div class="query-chrome" style="margin-top:0px; display:inline-block;vertical-align: top;width:40%;">
+                                      <div class="form-group">
+                                        <label for="sparqlEndpoint">SPARQL endpoint</label>
+                                        <input type="text" class="form-control" id="sparqlEndpoint" />
+                                      </div>
+                                </div>
+                                 <div class="query-chrome" style="margin-top:0px; display:inline-block; vertical-align: top;width:28%">
+                                      <div class="form-group">
+                                        <label for="selectContentType">Content Type (Select)</label>
+                                        <select id="selectContentType" class="form-control">
+                                          <option value="application/sparql-results+json">JSON</option>
+                                          <option value="application/sparql-results+xml">XML</option>
+                                          <option value="text/csv">CSV</option>
+                                          <option value="text/tab-separated-values">TSV</option>
+                                        </select>
+                                      </div>
+                                </div>
+                                <div class="query-chrome" style="margin-top:0px; display:inline-block; vertical-align: top;width:28%">
+                                      <div class="form-group">
+                                        <label for="graphContentType">Content Type (Graph)</label>
+                                        <select id="graphContentType" class="form-control">
+                                          <option value="text/turtle">Turtle</option>
+                                          <option value="application/ld+json">JSON-LD</option>
+                                          <option value="application/n-triples">N-Triples</option>
+                                          <option value="application/rdf+xml">XML</option>
+                                        </select>
+                                      </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                              <p>Add you SPARQL query below; make sure to provide all required query prefixes.</p>
+                            </div>
+                            <div class="col-md-12 well">
+                              <div class="query-edit">
+                                <div id="query-edit-cm" class=""></div>
+                              </div>
+                            </div>
+
+                            <!-- results -->
+                            <div id="results-block" class="row sparql sparql-results">
+                              <div class="col-md-12">
+                                <div class="well">
+                                  <div class="row">
+                                    <div class="col-md-12">
+                                      <span class="loadingSpinner hidden">
+                                        <img src="images/wait30.gif" alt="waiting for server action to complete" />
+                                      </span>
+                                      <span class="timeTaken hidden"></span>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-md-12" id="results">
+                                      <h2 class="col-md-12">Query results</h2>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
-                              <div class="row">
-                                <div class="col-md-12" id="results">
-                                  <h2 class="col-md-12">Query results</h2>
+                            </div>
+
+                            <div class="row clearfix"></div>
+                          </div>
+
+                          <!-- modal dialogue -->
+                          <div class="modal fade" id="prefixEditor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                  <h4 class="modal-title">Add a SPARQL prefix</h4>
+                                </div>
+                                <div class="modal-body">
+                                  <form class="form-horizontal" role="form">
+                                    <div class="form-group">
+                                      <label for="inputPrefix" class="col-lg-2 control-label">Prefix</label>
+                                      <div class="col-lg-10">
+                                        <input type="text" class="form-control" id="inputPrefix" placeholder="Prefix" autofocus>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <div class="col-lg-offset-2 col-lg-10">
+                                        <button class="btn btn-sm btn-primary" id="lookupPrefix">Lookup <span></span> on prefix.cc</button>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="inputURI" class="col-lg-2 control-label">URI</label>
+                                      <div class="col-lg-10">
+                                        <input type="text" class="form-control" id="inputURI" placeholder="URI">
+                                      </div>
+                                    </div>
+                                  </form>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+                                  <button type="button" class="btn btn-primary" data-dismiss="modal" id="addPrefix">add prefix</button>
                                 </div>
                               </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="row clearfix"></div>
-                      </div>
-
-                      <!-- modal dialogue -->
-                      <div class="modal fade" id="prefixEditor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                              <h4 class="modal-title">Add a SPARQL prefix</h4>
-                            </div>
-                            <div class="modal-body">
-                              <form class="form-horizontal" role="form">
-                                <div class="form-group">
-                                  <label for="inputPrefix" class="col-lg-2 control-label">Prefix</label>
-                                  <div class="col-lg-10">
-                                    <input type="text" class="form-control" id="inputPrefix" placeholder="Prefix" autofocus>
-                                  </div>
-                                </div>
-                                <div class="form-group">
-                                  <div class="col-lg-offset-2 col-lg-10">
-                                    <button class="btn btn-sm btn-primary" id="lookupPrefix">Lookup <span></span> on prefix.cc</button>
-                                  </div>
-                                </div>
-                                <div class="form-group">
-                                  <label for="inputURI" class="col-lg-2 control-label">URI</label>
-                                  <div class="col-lg-10">
-                                    <input type="text" class="form-control" id="inputURI" placeholder="URI">
-                                  </div>
-                                </div>
-                              </form>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
-                              <button type="button" class="btn btn-primary" data-dismiss="modal" id="addPrefix">add prefix</button>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
 
-              <div class="tab-pane" id="upload">
-                <div class="no-dataset">Please select a dataset.</div>
-                <div class="with-dataset hidden">
-                  <div class="row">
-                    <div id="file-upload"></div>
+                  <div class="tab-pane" id="upload">
+                    <div class="no-dataset">Please select a dataset.</div>
+                    <div class="with-dataset hidden">
+                      <div class="row">
+                        <div id="file-upload"></div>
+                      </div>
+                    </div>
                   </div>
+
+                  <div class="tab-pane" id="edit">
+                    <div class="no-dataset">Please select a dataset.</div>
+                    <div class="with-dataset hidden"></div>
+                  </div>
+
+                  <div class="tab-pane" id="info">
+                    <div class="no-dataset">Please select a dataset.</div>
+                    <div class="with-dataset hidden">
+                    </div>
+                  </div>
+
                 </div>
               </div>
-
-              <div class="tab-pane" id="edit">
-                <div class="no-dataset">Please select a dataset.</div>
-                <div class="with-dataset hidden"></div>
-              </div>
-
-              <div class="tab-pane" id="info">
-                <div class="no-dataset">Please select a dataset.</div>
-                <div class="with-dataset hidden">
-                </div>
-              </div>
-
             </div>
           </div>
         </div>
