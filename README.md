@@ -22,5 +22,5 @@ More information about the project including related projects as well as tutoria
 examples can be found at our odML [project page](https://g-node.github.io/python-odml/).
 
 The odML specific RDF definitions can be found [here](
-https://raw.githubusercontent.com/G-Node/python-odml/master/doc/odml_ontology/root-ontology.ttl).
+https://raw.githubusercontent.com/G-Node/python-odml/master/odml/resources/odml-ontology.ttl).
 

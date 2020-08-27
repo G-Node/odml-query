@@ -8,6 +8,7 @@ RUN mkdir -p /content
 
 # Copy all files including the modified fuseki files into the main directory.
 ADD ./fuseki /fuseki
+ADD ./custom/webapp /fuseki/webapp/
 
 # Make sure both persistent graphs and server configuration files
 # are available on server startup
