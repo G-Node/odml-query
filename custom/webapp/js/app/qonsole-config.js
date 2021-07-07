@@ -38,13 +38,8 @@ define( [], function() {
                     "BIND(CONCAT(\"https://doi.org/\", ?doi_val) AS ?doi_link)\n" +
                  "}\n" +
                  "ORDER BY ?file\n" +
-                 "LIMIT 50",
+                 "LIMIT 100",
         "prefixes": ["rdf", "rdfs", "odml"]
-      },
-      { "name": "Generic query",
-        "query": "SELECT ?subject ?predicate ?object\nWHERE {\n" +
-                 "  ?subject ?predicate ?object\n}\n" +
-                 "LIMIT 25"
       },
       { "name": "Property query",
         "query": "SELECT ?file ?sec_name ?prop_name\nWHERE {\n" +
@@ -54,7 +49,7 @@ define( [], function() {
                  "  ?s odml:hasName ?sec_name .\n" +
                  "  ?s odml:hasProperty ?p .\n" +
                  "  ?p odml:hasName ?prop_name .\n}\n" +
-                 "ORDER BY ?file\nLIMIT 50",
+                 "ORDER BY ?file\nLIMIT 100",
         "prefixes": ["rdf", "odml"]
       },
       { "name": "Value query",
@@ -68,8 +63,13 @@ define( [], function() {
                  "  ?p odml:hasValue ?v .\n" +
                  "  ?v rdfs:member ?value .\n" +
                  "  {?p odml:hasName \"experiment\"} UNION {?p odml:hasName \"Recording duration\"} .\n}\n" +
-                 "ORDER BY ?file\nLIMIT 50",
+                 "ORDER BY ?file\nLIMIT 100",
         "prefixes": ["rdf", "rdfs", "odml"]
+      },
+      { "name": "Generic query",
+        "query": "SELECT ?subject ?predicate ?object\nWHERE {\n" +
+                 "  ?subject ?predicate ?object\n}\n" +
+                 "LIMIT 100"
       }
     ]
   };
