@@ -110,29 +110,15 @@ define( [], function() {
         "prefixes": ["rdf", "rdfs", "odml"]
       },
       { "name": "Property query",
-        "query": "SELECT ?file ?sec_name ?prop_name\nWHERE {\n" +
-                 "  ?d rdf:type odml:Document .\n" +
-                 "  ?d odml:hasFileName ?file .\n" +
-                 "  ?d odml:hasSection ?s .\n" +
-                 "  ?s odml:hasName ?sec_name .\n" +
-                 "  ?s odml:hasProperty ?p .\n" +
-                 "  ?p odml:hasName ?prop_name .\n}\n" +
-                 "ORDER BY ?file\nLIMIT 100",
+        "query": "SELECT ?s ?sec_name ?p ?prop_name\n" +
+                  "WHERE {\n" +
+                  "  ?s odml:hasName ?sec_name .\n" +
+                  "  ?s odml:hasProperty ?p .\n" +
+                  "  ?p odml:hasName ?prop_name .\n" +
+                  "}\n" +
+                  "ORDER BY ?s ?sec_name ?p ?prop_name\n" +
+                  "LIMIT 100",
         "prefixes": ["rdf", "odml"]
-      },
-      { "name": "Value query",
-        "query": "SELECT ?file ?sec_name ?prop_name ?value\nWHERE {\n" +
-                 "  ?d rdf:type odml:Document .\n" +
-                 "  ?d odml:hasFileName ?file .\n" +
-                 "  ?d odml:hasSection ?s .\n" +
-                 "  ?s odml:hasName ?sec_name .\n" +
-                 "  ?s odml:hasProperty ?p .\n" +
-                 "  ?p odml:hasName ?prop_name .\n" +
-                 "  ?p odml:hasValue ?v .\n" +
-                 "  ?v rdfs:member ?value .\n" +
-                 "  {?p odml:hasName \"experiment\"} UNION {?p odml:hasName \"Recording duration\"} .\n}\n" +
-                 "ORDER BY ?file\nLIMIT 100",
-        "prefixes": ["rdf", "rdfs", "odml"]
       },
       { "name": "Generic query",
         "query": "SELECT ?subject ?predicate ?object\nWHERE {\n" +
