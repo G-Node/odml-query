@@ -41,6 +41,17 @@ define( [], function() {
                  "LIMIT 100",
         "prefixes": ["rdf", "rdfs", "odml"]
       },
+
+      { "name": "Available keywords",
+        "query": "SELECT ?available_keywords (COUNT(?available_keywords) as ?num_keywords)\n" +
+                  "WHERE {\n" +
+                  "  ?property odml:hasName \"subject\" .\n" +
+                  "  ?property odml:hasValue ?value .\n" +
+                  "  ?value rdfs:member ?available_keywords .\n" +
+                  "}\n" +
+                  "GROUP BY ?available_keywords ORDER BY DESC( ?num_keywords )",
+        "prefixes": ["rdf", "rdfs", "odml"]
+      },
       { "name": "Property query",
         "query": "SELECT ?file ?sec_name ?prop_name\nWHERE {\n" +
                  "  ?d rdf:type odml:Document .\n" +
