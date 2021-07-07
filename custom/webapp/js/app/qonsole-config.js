@@ -41,7 +41,6 @@ define( [], function() {
                  "LIMIT 100",
         "prefixes": ["rdf", "rdfs", "odml"]
       },
-
       { "name": "Available keywords",
         "query": "SELECT ?available_keywords (COUNT(?available_keywords) as ?num_keywords)\n" +
                   "WHERE {\n" +
@@ -53,7 +52,7 @@ define( [], function() {
         "prefixes": ["rdf", "rdfs", "odml"]
       },
       { "name": "Author query",
-        "query", "SELECT ?author ?doi_link\n" +
+        "query": "SELECT ?author ?doi_link\n" +
                   "WHERE {\n" +
                   "  ?doc rdf:type odml:Document .\n" +
                   "  ?doc odml:hasFileName ?file .\n" +
@@ -82,7 +81,7 @@ define( [], function() {
         "prefixes": ["rdf", "rdfs", "odml"]
       },
       { "name": "Title query",
-        "query", "SELECT ?title ?doi_link\n" +
+        "query": "SELECT ?title ?doi_link\n" +
                   "WHERE {\n" +
                   "  ?doc rdf:type odml:Document .\n" +
                   "  ?doc odml:hasFileName ?file .\n" +
