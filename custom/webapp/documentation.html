@@ -51,7 +51,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li>
-                <img class="odml-logo" src="images/odMLLogo.png" alt="odML logo" title="meta.g-node.org" />
+                <img class="g-node-logo-navbar" src="images/gnode_logo.png" alt="gnode logo" title="meta.g-node.org" />
               </li>
             </ul>
           </div>
@@ -62,17 +62,46 @@
     <!-- Page content -->
     <div class="back-custom">
       <div class="container front-custom">
-        <div class="container">
-          <div class="row">
-            <h1>SPARQL standards</h1>
-            <ul>
-              <li> <a href="http://www.w3.org/TR/sparql11-query/">SPARQL 1.1 Query</a></li>
-              <li> <a href="http://www.w3.org/TR/sparql11-update/">SPARQL 1.1 Update</a></li>
-              <li> <a href="http://www.w3.org/TR/sparql11-protocol/">SPARQL 1.1 Protocol</a></li>
-              <li> <a href="http://www.w3.org/TR/sparql11-http-rdf-update/">SPARQL 1.1 Graph Store HTTP Protocol</a></li>
-            </ul>
-          </div>
-        </div>
+        <h2>Server queries</h2>
+        <div class="container">This server provides a couple of pre-defined queries to help getting started with searching the dataset.
+          On <a href="dataset.html">the search page</a> click on any of the "Example queries" and press the run
+          button to display the results found in the "Query results" section. Please note that most queries are
+          run with a certain results limit. The actual result might be larger than the limit defined and the query
+          limit can be adjusted accordingly.</div>
+        <hr>
+        <dl class="dl-horizontal no-margin">
+          <dt>Keyword query</dt>
+          <dd>this query will return the DOI links for all dataset that are tagged with one or two
+            keywords. By default the query specifies the keywords "Neuroscience" and "Electrophysiology".
+            These keywords can be replaced to search for different datasets.</dd>
+          <dt>Available keywords</dt>
+          <dd>this query will search all available datasets in this resource and return all
+            available keywords. These keywords can be uses with the "Keyword" query to retrieve the associated
+            datasets.</dd>
+          <dt>Author query</dt>
+          <dd>this query will return all authors and the DOI links associated with datasets
+            that are available via this resource.</dd>
+          <dt>Title query</dt>
+          <dd>This query will return the titles of all published datasets and their associated DOI links.</dd>
+          <dt>Property query</dt>
+          <dd>this more generic query will list all properties of all sections and should serve
+            as an entry point to understand the underlying data structure of the odML RDF data model to construct
+            more complex custom queries.</dd>
+          <dt>Generic query</dt>
+          <dd>the most basic query; like the "Property query" it can be used to explore the underlying
+            data structure and a starting point to construct more complex queries.</dd>
+        </dl>
+        <hr>
+
+        <h2>SPARQL standards</h2>
+        <div>Learn more about how to write your own SPARQL queries.</div>
+        <hr>
+        <ul>
+          <li> <a href="http://www.w3.org/TR/sparql11-query/">SPARQL 1.1 Query</a></li>
+          <li> <a href="http://www.w3.org/TR/sparql11-update/">SPARQL 1.1 Update</a></li>
+          <li> <a href="http://www.w3.org/TR/sparql11-protocol/">SPARQL 1.1 Protocol</a></li>
+          <li> <a href="http://www.w3.org/TR/sparql11-http-rdf-update/">SPARQL 1.1 Graph Store HTTP Protocol</a></li>
+        </ul>
       </div>
     </div>
 
