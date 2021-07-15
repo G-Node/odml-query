@@ -35,7 +35,7 @@ define( [], function() {
                  "  ?p odml:hasValue ?v .\n" +
                  "  {?v rdfs:member \"Neuroscience\"} UNION {?v rdfs:member \"Electrophysiology\"} .\n" +
                  "  ?v rdfs:member ?keyword .\n" +
-                 "BIND(CONCAT(\"https://doi.org/\", ?doi_val) AS ?doi_link)\n" +
+                 "  BIND(URI(CONCAT(\"https://doi.org/\", ?doi_val)) AS ?doi_link)\n" +
                  "}\n" +
                  "ORDER BY ?file\n" +
                  "LIMIT 100",
@@ -74,7 +74,7 @@ define( [], function() {
                   "  ?prop odml:hasName \"creatorName\" .\n" +
                   "  ?prop odml:hasValue ?val .\n" +
                   "  ?val rdfs:member ?author .\n" +
-                  "BIND(CONCAT(\"https://doi.org/\", ?doi_val) AS ?doi_link)\n" +
+                  "  BIND(URI(CONCAT(\"https://doi.org/\", ?doi_val)) AS ?doi_link)\n" +
                   "}\n" +
                   "ORDER BY ?author\n" +
                   "LIMIT 1000",
@@ -103,7 +103,7 @@ define( [], function() {
                   "  ?prop odml:hasName \"title\" .\n" +
                   "  ?prop odml:hasValue ?val .\n" +
                   "  ?val rdfs:member ?title .\n" +
-                  "BIND(CONCAT(\"https://doi.org/\", ?doi_val) AS ?doi_link)\n" +
+                  "  BIND(URI(CONCAT(\"https://doi.org/\", ?doi_val)) AS ?doi_link)\n" +
                   "}\n" +
                   "ORDER BY ?title\n" +
                   "LIMIT 500",
