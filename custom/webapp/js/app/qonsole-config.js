@@ -11,7 +11,7 @@ define( [], function() {
       "odml":     "https://g-node.org/odml-rdf#"
     },
     queries: [
-      { "name": "Keyword query",
+      { "name": "DOI from Keyword query",
         "query": "# Query returning DOI links for all datasets with specified keywords.\n" +
                   "SELECT ?file (SAMPLE(?kwd) as ?keyword) ?doi_link\n" +
                   "WHERE {\n" +
@@ -37,18 +37,7 @@ define( [], function() {
                   "LIMIT 50",
         "prefixes": ["rdf", "rdfs", "odml"]
       },
-      { "name": "Available keywords",
-        "query": "# Query returning all available keywords that are registered for datasets in this graph\n" +
-                  "SELECT ?available_keywords (COUNT(?available_keywords) as ?num_keywords)\n" +
-                  "WHERE {\n" +
-                  "  ?property odml:hasName \"subject\" .\n" +
-                  "  ?property odml:hasValue ?value .\n" +
-                  "  ?value rdfs:member ?available_keywords .\n" +
-                  "}\n" +
-                  "GROUP BY ?available_keywords ORDER BY DESC( ?num_keywords )",
-        "prefixes": ["rdf", "rdfs", "odml"]
-      },
-      { "name": "Author query",
+      { "name": "DOI for Author query",
         "query": "# Query returning all authors of registered datasets in this graph\n" +
                   "SELECT ?author ?doi_link\n" +
                   "WHERE {\n" +
@@ -78,7 +67,7 @@ define( [], function() {
                   "LIMIT 1000",
         "prefixes": ["rdf", "rdfs", "odml"]
       },
-      { "name": "Title query",
+      { "name": "DOI for Title query",
         "query": "# Query returning all titles of registered datasets in this graph\n" +
                   "SELECT ?title ?doi_link\n" +
                   "WHERE {\n" +
@@ -108,7 +97,39 @@ define( [], function() {
                   "LIMIT 500",
         "prefixes": ["rdf", "rdfs", "odml"]
       },
-      { "name": "Property query",
+      { "name": "Available keywords",
+        "query": "# Query returning all available keywords that are registered for datasets in this graph\n" +
+                  "SELECT ?available_keywords (COUNT(?available_keywords) as ?num_keywords)\n" +
+                  "WHERE {\n" +
+                  "  ?property odml:hasName \"subject\" .\n" +
+                  "  ?property odml:hasValue ?value .\n" +
+                  "  ?value rdfs:member ?available_keywords .\n" +
+                  "}\n" +
+                  "GROUP BY ?available_keywords ORDER BY DESC( ?num_keywords )",
+        "prefixes": ["rdf", "rdfs", "odml"]
+      },
+      { "name": "Available Classes query",
+        "query": "# Return all odml classes that are available for queries\n" +
+                  "SELECT ?type\n" +
+                  "WHERE {\n" +
+                  "  ?subject rdf:type ?type .\n" +
+                  "}\n" +
+                  "GROUP by ?type ORDER BY ?type",
+        "prefixes": ["rdf", "odml"]
+      },
+      { "name": "Available odML types query",
+        "query": "# Count and display all odml specific types in this graph as well as their RDF class.\n" +
+                  "SELECT ?subClass ?sec_type (COUNT(?sec_type) AS ?section_type_count)\n" +
+                  "WHERE {\n" +
+                  "  {?subClass rdfs:subClassOf odml:Section} UNION { ?sec rdf:type odml:Section } .\n" +
+                  "  ?sec rdf:type ?subClass .\n" +
+                  "  ?sec odml:hasType ?sec_type .\n" +
+                  "}\n" +
+                  "GROUP BY ?subClass ?sec_type ORDER BY DESC(?section_type_count)\n" +
+                  "LIMIT 100",
+        "prefixes": ["rdf", "rdfs", "odml"]
+      },
+      { "name": "Section/Property query",
         "query": "SELECT ?s ?sec_name ?p ?prop_name\n" +
                   "WHERE {\n" +
                   "  ?s odml:hasName ?sec_name .\n" +
@@ -119,16 +140,7 @@ define( [], function() {
                   "LIMIT 100",
         "prefixes": ["rdf", "odml"]
       },
-      { "name": "Available classes query",
-        "query": "# Return all odml classes that are available for queries\n" +
-                  "SELECT ?type\n" +
-                  "WHERE {\n" +
-                  "  ?subject rdf:type ?type .\n" +
-                  "}\n" +
-                  "GROUP by ?type ORDER BY ?type",
-        "prefixes": ["rdf", "odml"]
-      },
-      { "name": "Section via Property query",
+      { "name": "Section from Property value query",
         "query": "# Identify odml:Section via odml:Property value\n" +
                   "SELECT ?sec ?sec_name ?prop_name ?val_str\n" +
                   "WHERE {\n" +
@@ -140,18 +152,6 @@ define( [], function() {
                   "  FILTER(STRSTARTS(?val_str, \"Ludwig\"))\n" +
                   "}\n" +
                   "ORDER BY ?sec_name ?prop_name ?val_str\n" +
-                  "LIMIT 100",
-        "prefixes": ["rdf", "rdfs", "odml"]
-      },
-      { "name": "odml types query",
-        "query": "# Count and display all odml specific types in this graph as well as their RDF class.\n" +
-                  "SELECT ?subClass ?sec_type (COUNT(?sec_type) AS ?section_type_count)\n" +
-                  "WHERE {\n" +
-                  "  {?subClass rdfs:subClassOf odml:Section} UNION { ?sec rdf:type odml:Section } .\n" +
-                  "  ?sec rdf:type ?subClass .\n" +
-                  "  ?sec odml:hasType ?sec_type .\n" +
-                  "}\n" +
-                  "GROUP BY ?subClass ?sec_type ORDER BY DESC(?section_type_count)\n" +
                   "LIMIT 100",
         "prefixes": ["rdf", "rdfs", "odml"]
       },
