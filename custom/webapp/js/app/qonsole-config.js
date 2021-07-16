@@ -119,6 +119,73 @@ define( [], function() {
                   "LIMIT 100",
         "prefixes": ["rdf", "odml"]
       },
+      { "name": "Available classes query",
+        "query": "# Return all odml classes that are available for queries\n" +
+                  "SELECT ?type\n" +
+                  "WHERE {\n" +
+                  "  ?subject rdf:type ?type .\n" +
+                  "}\n" +
+                  "GROUP by ?type ORDER BY ?type",
+        "prefixes": ["rdf", "odml"]
+      },
+      { "name": "Section via Property query",
+        "query": "# Identify odml:Section via odml:Property value\n" +
+                  "SELECT ?sec ?sec_name ?prop_name ?val_str\n" +
+                  "WHERE {\n" +
+                  "  ?sec odml:hasName ?sec_name .\n" +
+                  "  ?sec odml:hasProperty ?prop .\n" +
+                  "  ?prop odml:hasName ?prop_name .\n" +
+                  "  ?prop odml:hasValue ?val .\n" +
+                  "  ?val rdfs:member ?val_str .\n" +
+                  "  FILTER(STRSTARTS(?val_str, \"Ludwig\"))\n" +
+                  "}\n" +
+                  "ORDER BY ?sec_name ?prop_name ?val_str\n" +
+                  "LIMIT 100",
+        "prefixes": ["rdf", "rdfs", "odml"]
+      },
+      { "name": "odml types query",
+        "query": "# Count and display all odml specific types in this graph as well as their RDF class.\n" +
+                  "SELECT ?subClass ?sec_type (COUNT(?sec_type) AS ?section_type_count)\n" +
+                  "WHERE {\n" +
+                  "  {?subClass rdfs:subClassOf odml:Section} UNION { ?sec rdf:type odml:Section } .\n" +
+                  "  ?sec rdf:type ?subClass .\n" +
+                  "  ?sec odml:hasType ?sec_type .\n" +
+                  "}\n" +
+                  "GROUP BY ?subClass ?sec_type ORDER BY DESC(?section_type_count)\n" +
+                  "LIMIT 100",
+        "prefixes": ["rdf", "rdfs", "odml"]
+      },
+      { "name": "Section from odml type query",
+        "query": "# Find all sections by specific odml section types\n" +
+                  "SELECT ?sec ?sec_name\n" +
+                  "WHERE {\n" +
+                  "  ?sec rdf:type odml:Section .\n" +
+                  "  ?sec odml:hasName ?sec_name .\n" +
+                  "  ?sec odml:hasType \"datacite/titles\" .\n" +
+                  "}\n" +
+                  "LIMIT 100",
+        "prefixes": ["rdf", "odml"]
+      },
+      { "name": "Section content query",
+        "query": "# Congregate all subsections and values of a specific parent section (example class: odml:Creator).\n" +
+                  "SELECT ?sec ?creator_name (GROUP_CONCAT(CONCAT(?subprop_name, \": \", ?subval_str); SEPARATOR=\" | \") AS ?property_values)\n" +
+                  "WHERE {\n" +
+                  "  ?sec rdf:type odml:Creator .\n" +
+                  "  ?sec odml:hasProperty ?prop .\n" +
+                  "  ?prop odml:hasName ?prop_name .\n" +
+                  "  ?prop odml:hasValue ?val .\n" +
+                  "  ?val rdfs:member ?creator_name .\n" +
+                  "  ?sec odml:hasSection ?subsec .\n" +
+                  "  ?subsec odml:hasName ?subsec_name .\n" +
+                  "  ?subsec odml:hasProperty ?subprop .\n" +
+                  "  ?subprop odml:hasName ?subprop_name .\n" +
+                  "  ?subprop odml:hasValue ?subval .\n" +
+                  "  ?subval rdfs:member ?subval_str .\n" +
+                  "}\n" +
+                  "GROUP BY ?sec ?creator_name ORDER BY ?sec ?subprop_name\n" +
+                  "LIMIT 100",
+        "prefixes": ["rdf", "rdfs", "odml"]
+      },
       { "name": "Generic query",
         "query": "# The most generic query possible\n" +
                  "SELECT ?subject ?predicate ?object\nWHERE {\n" +
