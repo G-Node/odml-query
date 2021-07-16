@@ -12,7 +12,8 @@ define( [], function() {
     },
     queries: [
       { "name": "Keyword query",
-        "query": "SELECT ?file (SAMPLE(?kwd) as ?keyword) ?doi_link\n" +
+        "query": "# Query returning DOI links for all datasets with specified keywords.\n" +
+                  "SELECT ?file (SAMPLE(?kwd) as ?keyword) ?doi_link\n" +
                   "WHERE {\n" +
                   "  ?doc rdf:type odml:Document .\n" +
                   "  ?doc odml:hasFileName ?file .\n" +
@@ -37,7 +38,8 @@ define( [], function() {
         "prefixes": ["rdf", "rdfs", "odml"]
       },
       { "name": "Available keywords",
-        "query": "SELECT ?available_keywords (COUNT(?available_keywords) as ?num_keywords)\n" +
+        "query": "# Query returning all available keywords that are registered for datasets in this graph\n" +
+                  "SELECT ?available_keywords (COUNT(?available_keywords) as ?num_keywords)\n" +
                   "WHERE {\n" +
                   "  ?property odml:hasName \"subject\" .\n" +
                   "  ?property odml:hasValue ?value .\n" +
@@ -47,7 +49,8 @@ define( [], function() {
         "prefixes": ["rdf", "rdfs", "odml"]
       },
       { "name": "Author query",
-        "query": "SELECT ?author ?doi_link\n" +
+        "query": "# Query returning all authors of registered datasets in this graph\n" +
+                  "SELECT ?author ?doi_link\n" +
                   "WHERE {\n" +
                   "  ?doc rdf:type odml:Document .\n" +
                   "  ?doc odml:hasFileName ?file .\n" +
@@ -76,7 +79,8 @@ define( [], function() {
         "prefixes": ["rdf", "rdfs", "odml"]
       },
       { "name": "Title query",
-        "query": "SELECT ?title ?doi_link\n" +
+        "query": "# Query returning all titles of registered datasets in this graph\n" +
+                  "SELECT ?title ?doi_link\n" +
                   "WHERE {\n" +
                   "  ?doc rdf:type odml:Document .\n" +
                   "  ?doc odml:hasFileName ?file .\n" +
@@ -116,7 +120,8 @@ define( [], function() {
         "prefixes": ["rdf", "odml"]
       },
       { "name": "Generic query",
-        "query": "SELECT ?subject ?predicate ?object\nWHERE {\n" +
+        "query": "# The most generic query possible\n" +
+                 "SELECT ?subject ?predicate ?object\nWHERE {\n" +
                  "  ?subject ?predicate ?object\n}\n" +
                  "LIMIT 100"
       }
