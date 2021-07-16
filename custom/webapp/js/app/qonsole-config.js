@@ -12,33 +12,28 @@ define( [], function() {
     },
     queries: [
       { "name": "Keyword query",
-        "query": "SELECT ?file ?keyword ?id_type_value ?doi_link\n" +
-                 "WHERE {\n" +
-                 "  ?doc rdf:type odml:Document .\n" +
-                 "  ?doc odml:hasFileName ?file .\n" +
-                 "  ?doc odml:hasSection ?s .\n" +
-                 "  ?s odml:hasSection ?ids .\n" +
-                 "  ?ids odml:hasProperty ?idp .\n" +
-                 "  ?ids odml:hasName ?secidname .\n" +
-                 "  ?idp odml:hasName \"identifier\" .\n" +
-                 "  ?idp odml:hasValue ?doival .\n" +
-                 "  ?ids odml:hasProperty ?pt .\n" +
-                 "  ?pt odml:hasName \"identifierType\" .\n" +
-                 "  ?pt odml:hasValue ?idtype .\n" +
-                 "  ?idtype rdfs:member ?id_type_value .\n" +
-                 "  ?doival rdfs:member ?doi_val .\n" +
-                 "  ?s odml:hasSection ?subcont .\n" +
-                 "  ?s odml:hasName ?sec_name .\n" +
-                 "  ?subcont odml:hasSection ?subj .\n" +
-                 "  ?subj odml:hasProperty ?p .\n" +
-                 "  ?p odml:hasName ?prop_name .\n" +
-                 "  ?p odml:hasValue ?v .\n" +
-                 "  {?v rdfs:member \"Neuroscience\"} UNION {?v rdfs:member \"Electrophysiology\"} .\n" +
-                 "  ?v rdfs:member ?keyword .\n" +
-                 "  BIND(URI(CONCAT(\"https://doi.org/\", ?doi_val)) AS ?doi_link)\n" +
-                 "}\n" +
-                 "ORDER BY ?file\n" +
-                 "LIMIT 100",
+        "query": "SELECT ?file (SAMPLE(?kwd) as ?keyword) ?doi_link\n" +
+                  "WHERE {\n" +
+                  "  ?doc rdf:type odml:Document .\n" +
+                  "  ?doc odml:hasFileName ?file .\n" +
+                  "  ?doc odml:hasSection* ?sec_id .\n" +
+                  "  ?sec_id odml:hasProperty ?prp_id .\n" +
+                  "  ?prp_id odml:hasName \"identifier\" .\n" +
+                  "  ?prp_id odml:hasValue ?val_doi .\n" +
+                  "  ?val_doi ?pred_doi ?doival .\n" +
+                  "  ?doc odml:hasSection* ?sec_subj .\n" +
+                  "  ?sec_subj odml:hasType \"datacite/subject\" .\n" +
+                  "  ?sec_subj odml:hasProperty ?prp_subj .\n" +
+                  "  ?prp_subj odml:hasValue ?val_subj .\n" +
+                  "  ?val_subj ?pred_subj ?kwd .\n" +
+                  "  {?val_subj ?pred_subj \"Neuroscience\"} UNION\n" +
+                  "  {?val_subj ?pred_subj \"Electrophysiology\"} .\n" +
+                  "  FILTER regex(str(?pred_doi), '_')\n" +
+                  "  BIND(URI(CONCAT(\"https://doi.org/\", STR(?doival))) as ?doi_link)\n" +
+                  "}\n" +
+                  "GROUP BY ?file ?doi_link\n" +
+                  "ORDER BY ?file\n" +
+                  "LIMIT 50",
         "prefixes": ["rdf", "rdfs", "odml"]
       },
       { "name": "Available keywords",
