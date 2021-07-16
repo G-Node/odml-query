@@ -64,29 +64,44 @@
       <div class="container front-custom">
         <h2>Server queries</h2>
         <div class="container">This server provides a couple of pre-defined queries to help getting started with searching the dataset.
-          On <a href="dataset.html">the search page</a> click on any of the "Example queries" and press the run
+          On the <a href="dataset.html">search page</a> click on any of the "Example queries" and press the run
           button to display the results found in the "Query results" section. Please note that most queries are
           run with a certain results limit. The actual result might be larger than the limit defined and the query
           limit can be adjusted accordingly.</div>
         <hr>
         <dl class="dl-horizontal no-margin">
-          <dt>Keyword query</dt>
+          <dt>DOI from Keyword query</dt>
           <dd>this query will return the DOI links for all dataset that are tagged with one or two
             keywords. By default the query specifies the keywords "Neuroscience" and "Electrophysiology".
             These keywords can be replaced to search for different datasets.</dd>
+          <dt>DOI for Author query</dt>
+          <dd>this query will return all authors and the DOI links associated with datasets
+            that are available via this resource.</dd>
+          <dt>DOI for Title query</dt>
+          <dd>This query will return the titles of all published datasets and their associated DOI links.</dd>
           <dt>Available keywords</dt>
           <dd>this query will search all available datasets in this resource and return all
             available keywords. These keywords can be uses with the "Keyword" query to retrieve the associated
             datasets.</dd>
-          <dt>Author query</dt>
-          <dd>this query will return all authors and the DOI links associated with datasets
-            that are available via this resource.</dd>
-          <dt>Title query</dt>
-          <dd>This query will return the titles of all published datasets and their associated DOI links.</dd>
-          <dt>Property query</dt>
+          <dt>Available Classes query</dt>
+          <dd>this query displays all RDF classes available in this resource. These classes can be used to construct
+          more specific queries.</dd>
+          <dt>Available odml types query</dt>
+          <dd>this query displays all distinct odml types in this resources as well as their RDF class.
+            The values of these types as well as their specific RDF classes can be used to construct more specific
+            queries. These values give an overview of the types of metadata stored in this graph.</dd>
+          <dt>Section/Property query</dt>
           <dd>this more generic query will list all properties of all sections and should serve
             as an entry point to understand the underlying data structure of the odML RDF data model to construct
             more complex custom queries.</dd>
+          <dt>Section from Property value query</dt>
+          <dd>this query shows how to identify an odml:Section from a specific value of an odml:Property.
+            This query can be used as a building block to construct more complex queries.</dd>
+          <dt>Section from odml type query</dt>
+          <dd>this query shows how to identify an odml:Section from the value of an odml type.
+            This query can be used as a building block to construct more complex queries.</dd>
+          <dt>Section content query</dt>
+          <dd>this query shows how to congregate and display all Properties and Values of a single odml:Section.</dd>
           <dt>Generic query</dt>
           <dd>the most basic query; like the "Property query" it can be used to explore the underlying
             data structure and a starting point to construct more complex queries.</dd>
