@@ -1,4 +1,4 @@
-FROM java:8
+FROM openjdk:14-alpine AS base
 
 # Create content folder that will be linked from the outside into
 # the container. It will contain the persistent graphs contents
@@ -21,4 +21,9 @@ WORKDIR /fuseki
 VOLUME $FUSEKI_BASE
 
 # Start the service
-ENTRYPOINT sh fuseki-server --port=4044
+ADD docker_startup.sh /fuseki
+RUN chmod +x ./docker_startup.sh
+
+#ENTRYPOINT sh fuseki-server --port=4044
+ENTRYPOINT ["./docker_startup.sh"]
+
