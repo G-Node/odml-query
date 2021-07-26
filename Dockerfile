@@ -1,4 +1,4 @@
-FROM openjdk:14-alpine AS base
+FROM openjdk:17-alpine
 
 # Create content folder that will be linked from the outside into
 # the container. It will contain the persistent graphs contents
