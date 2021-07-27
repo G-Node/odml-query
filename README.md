@@ -4,26 +4,9 @@
 
 odml-query is a SPARQL server based on [Apache Fuseki](
 https://jena.apache.org/documentation/fuseki2/index.html), the service is modified 
-to query [odML](https://g-node.github.io/python-odml/) specific RDF.  
+to query [odML](https://g-node.github.io/python-odml/) specific RDF.
 
 For more information on the odML data formats, please check the sections below.
-
-
-## The odML (Open metaData Markup Language) format
-
-The open metadata Markup Language is a file based format (XML, JSON, YAML) for storing
-metadata in an organised human- and machine-readable way. odML is an initiative to define
-and establish an open, flexible, and easy-to-use format to transport metadata.
-
-The source code of the core library is freely available on 
-[GitHub](https://github.com/G-Node/python-odml) and can be installed via the 
-Python package manager `pip` by typing `pip install odml`.
-
-More information about the project including related projects as well as tutorials and
-examples can be found at our odML [project page](https://g-node.github.io/python-odml/).
-
-The odML specific RDF definitions can be found [here](
-https://raw.githubusercontent.com/G-Node/python-odml/master/odml/resources/odml-ontology.ttl).
 
 
 ## Docker setup
@@ -43,3 +26,27 @@ $ROOT_FOLDER
 ```
 
 Once the service is started locally using docker-compose, the service is available at `localhost:4044`, the port can be adjusted via the `docker-compose.yml` entry.
+
+### Server customization and custom queries
+
+The server has been customized to to query [odML](https://g-node.github.io/python-odml/) specific RDF. To this end the main, help and query pages have been modified; these changes can be found in the `custom` directory. When creating the Docker container, these files are copied to replace their original counterparts.
+
+The server features a custom RDF namespace prefix ("odml") and various custom RDF queries that are specific to query odML RDF graphs containing information from DataCite.
+Prefix and query can be changed in the `custom/webapp/js/app/qonsole-config.js` file. Once this is done, the docker image needs to be built again.
+
+
+## The odML (Open metaData Markup Language) format
+
+The open metadata Markup Language is a file based format (XML, JSON, YAML) for storing
+metadata in an organised human- and machine-readable way. odML is an initiative to define
+and establish an open, flexible, and easy-to-use format to transport metadata.
+
+The source code of the core library is freely available on 
+[GitHub](https://github.com/G-Node/python-odml) and can be installed via the 
+Python package manager `pip` by typing `pip install odml`.
+
+More information about the project including related projects as well as tutorials and
+examples can be found at our odML [project page](https://g-node.github.io/python-odml/).
+
+The odML specific RDF definitions can be found [here](
+https://raw.githubusercontent.com/G-Node/python-odml/master/odml/resources/odml-ontology.ttl).
