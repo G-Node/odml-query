@@ -1,0 +1,27 @@
+version: "3.3"
+services:
+
+  meta:
+    image: gnode/meta:latest
+    ports: # expose ports for local runs only
+      - "4044:4044"
+    networks:
+      metanet:
+        ipv4_address: 172.5.0.5
+    volumes:
+      - content:/content:rw
+
+volumes:
+  content:
+    driver: "local"
+    driver_opts:
+      type: "none"
+      o: "bind"
+      device: "[path/to/ROOT_FOLDER]/service"
+
+networks:
+  metanet:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.5.0.0/16

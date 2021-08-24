@@ -1,8 +1,8 @@
 The server in its current build uses the following software versions:
 
-Jena:       VERSION: 3.16.0
-Jena:       BUILD_DATE: 2020-07-09T16:13:45+0000
-TDB:        VERSION: 3.16.0
-TDB:        BUILD_DATE: 2020-07-09T16:13:45+0000
-Fuseki:     VERSION: 3.16.0
-Fuseki:     BUILD_DATE: 2020-07-09T16:13:45+0000
+Jena:       VERSION: 4.1.0
+Jena:       BUILD_DATE: 2021-05-31T20:32:25+0000
+TDB:        VERSION: 4.1.0
+TDB:        BUILD_DATE: 2021-05-31T20:32:25+0000
+Fuseki:     VERSION: 4.1.0
+Fuseki:     BUILD_DATE: 2021-05-31T20:32:25+0000
