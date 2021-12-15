@@ -24,6 +24,12 @@ VOLUME $FUSEKI_BASE
 ADD docker_startup.sh /fuseki
 RUN chmod +x ./docker_startup.sh
 
+# Mitigation of log4j vulnerability; required until the built in
+# log4j version in fuseki-server.jar has been updated to >= 2.15.0
+# Check fuseki-server.jar:METAINF/DEPENDENCIES for the used version.
+# Check https://logging.apache.org/log4j/2.x/security.html for details
+ENV LOG4J_FORMAT_MSG_NO_LOOKUPS=true
+
 #ENTRYPOINT sh fuseki-server --port=4044
 ENTRYPOINT ["./docker_startup.sh"]
 

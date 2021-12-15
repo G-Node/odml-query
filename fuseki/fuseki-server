@@ -104,7 +104,11 @@ fi
 
 JVM_ARGS=${JVM_ARGS:--Xmx4G}
 
-exec $JAVA $JVM_ARGS -cp "$CP" org.apache.jena.fuseki.cmd.FusekiCmd "$@"
+# This applies a log4j security vulnerability mitigation and should only
+# be changed back to default when the used log4j version has been upgraded
+# to >= 2.15.0; check https://logging.apache.org/log4j/2.x/security.html
+# for details; Check fuseki-server.jar:METAINF/DEPENDENCIES for the used version.
+exec $JAVA $JVM_ARGS -Dlog4j2.formatMsgNoLookups=true -cp "$CP" org.apache.jena.fuseki.cmd.FusekiCmd "$@"
 
 ## Adding custom code to the Fuseki server:
 ##
