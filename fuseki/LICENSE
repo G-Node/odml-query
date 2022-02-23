@@ -230,6 +230,16 @@ http://www.slf4j.org/license.html
 
 - - - - - - - - - - - - - - - - - - - - - - - 
 
+Jakarta JSON Processing (JSON-P)
+https://eclipse-ee4j.github.io/jsonp/
+
+is licensed under the Eclipse Public License 2.0.
+http://www.eclipse.org/legal/epl-2.0
+
+org.glassfish:jakarta.json
+is licensed under the Eclipse Public License 2.0.
+http://www.eclipse.org/legal/epl-2.0
+
 ==============================================================
  Jetty Web Container
  Copyright 1995-2012 Mort Bay Consulting Pty Ltd.
@@ -332,16 +342,7 @@ See http://yasr.yasgui.org/license.txt
 
 - - - - - - - - - - - - - - - - - - - - - - - 
 
-From Apache HttpComponents Client
-
-This project contains annotations derived from JCIP-ANNOTATIONS
-Copyright (c) 2005 Brian Goetz and Tim Peierls.
-See http://www.jcip.net and the Creative Commons Attribution License 
-(http://creativecommons.org/licenses/by/2.5)
-
-- - - - - - - - - - - - - - - - - - - - - - - 
-
-From Apache Lucene
+From Apache Lucene:
 
 Some code in core/src/java/org/apache/lucene/util/UnicodeUtil.java was
 derived from unicode conversion examples available at
@@ -614,4 +615,4 @@ WHETHER IN  CONTRACT, STRICT LIABILITY, OR  TORT (INCLUDING NEGLIGENCE
 OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
+---
