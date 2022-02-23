@@ -112,7 +112,11 @@ then
     LOGGING="-Dlog4j.configurationFile=$DFT_LOG_CONF"
 fi
 
-exec $JAVA $JVM_ARGS $LOGGING -cp "$CP" org.apache.jena.fuseki.cmd.FusekiCmd "$@"
+# This applies a log4j security vulnerability mitigation and should only
+# be changed back to default when the used log4j version has been upgraded
+# to >= 2.15.0; check https://logging.apache.org/log4j/2.x/security.html
+# for details; Check fuseki-server.jar:METAINF/DEPENDENCIES for the used version.
+exec $JAVA $JVM_ARGS -Dlog4j2.formatMsgNoLookups=true $LOGGING -cp "$CP" org.apache.jena.fuseki.cmd.FusekiCmd "$@"
 
 ## Adding custom code to the Fuseki server:
 ##
